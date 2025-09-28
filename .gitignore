@@ -1,0 +1,36 @@
+# Hugo build output
+/public/
+/docs/
+/resources/
+/hugo_stats.json
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Node dependencies (if you use npm/yarn for Tailwind or tooling)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Go modules cache (if using Hugo modules)
+.hugo_build.lock
+
+# IDE/editor files
+.idea/
+.vscode/
+*.code-workspace
+
+# Backup files
+*~
+*.bak
+
+# Local environment
+.env
+.env.*
