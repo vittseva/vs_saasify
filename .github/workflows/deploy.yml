@@ -42,7 +42,15 @@ jobs:
 
       - name: Install PostCSS deps
         run: |
-          npm install -g postcss postcss-cli autoprefixer
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm i
+          fi
+
+      # Tell Hugo exactly where PostCSS CLI is (local node_modules)
+      - name: Set PostCSS executable for Hugo
+        run: echo "HUGO_POSTCSS_EXECUTABLE=./node_modules/.bin/postcss" >> $GITHUB_ENV          
 
       - name: Compute Project Pages baseURL
         run: echo "BASEURL=https://vittseva.github.io/vs_saasify/" >> $GITHUB_ENV
