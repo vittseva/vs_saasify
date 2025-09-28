@@ -27,7 +27,7 @@ paginatePath = "page"
 [params]
   description = "Simple, trustworthy guidance to plan, track, and grow — made for Indian families."
   author = "VittSeva"
-  logo = "/images/vs/logo-vittseva-small.svg"
+  logo = "images/vs/logo-vittseva-small.svg"
   # googleAnalytics = "G-XXXXXXXXXX"
   disclaimer = "VittSeva is a financial advisory service. All investments are subject to market risks. Past performance does not guarantee future results. Please read all scheme related documents carefully before investing. Consult with our certified financial advisors for recommendations tailored to your specific financial situation."
 
@@ -67,7 +67,7 @@ paginatePath = "page"
 
     # Logo configuration
     [params.header.logo]
-      src = "/images/vs/logo-vittseva-small.svg"
+      src = "images/vs/logo-vittseva-small.svg"
 
     # Menu configuration
     [params.header.menu]
@@ -162,15 +162,15 @@ paginatePath = "page"
     [menu.main.params]
       has_submenu = true
       submenu = [
-      { name = "Accounting & Tax Filing", url = "/service/accounting-tax/" },
-        { name = "Insurance", url = "/service/insurance/" },
-        { name = "Claim Settlement", url = "/service/claim-settlement/" },
-        { name = "Loans", url = "/service/loans/" },
-        { name = "Investments", url = "/service/investments/" },
-        { name = "Funding & Finance", url = "/service/funding-finance/" },
-        { name = "Business Banking", url = "/service/business-banking/" },
-        { name = "NRI Services", url = "/service/nri-services/" },
-        { name = "Corporate Law Advisory", url = "/service/corporate-law/" }
+      { name = "Accounting & Tax Filing", url = "service/accounting-tax/" },
+        { name = "Insurance", url = "service/insurance/" },
+        { name = "Claim Settlement", url = "service/claim-settlement/" },
+        { name = "Loans", url = "service/loans/" },
+        { name = "Investments", url = "service/investments/" },
+        { name = "Funding & Finance", url = "service/funding-finance/" },
+        { name = "Business Banking", url = "service/business-banking/" },
+        { name = "NRI Services", url = "service/nri-services/" },
+        { name = "Corporate Law Advisory", url = "service/corporate-law/" }
       ]
 
   [[menu.main]]
