@@ -1,0 +1,60 @@
+name: Deploy Hugo site to GitHub Pages (Project)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (with submodules & LFS)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          lfs: true
+
+      - name: Show submodules
+        run: git submodule status
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.150.1'
+          extended: true
+
+      - name: Compute Project Pages baseURL
+        run: echo "BASEURL=https://vittseva.github.io/vs_saasify/" >> $GITHUB_ENV
+
+      - name: Build
+        env:
+          HUGO_ENV: production
+          HUGO_ENABLEGITINFO: "true"
+        run: |
+          hugo --minify --gc --baseURL "${BASEURL}"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
