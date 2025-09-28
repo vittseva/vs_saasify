@@ -60,7 +60,12 @@ jobs:
           HUGO_ENV: production
           HUGO_ENABLEGITINFO: "true"
         run: |
-          hugo --minify --gc --baseURL "${BASEURL}"
+          # Force output dir to ./public regardless of publishDir in config
+          hugo --minify --gc --baseURL "${BASEURL}" -d public
+          echo "=== Built files ==="
+          find public -maxdepth 2 -type f | head -n 100 || true
+          # Explicit sanity check
+          test -d public || (echo "Hugo did not create 'public/'"; exit 1)
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

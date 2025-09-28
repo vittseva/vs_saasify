@@ -1,7 +1,6 @@
 baseURL = "/"
 languageCode = "en-us"
 title = ""
-publishDir = "docs"
 
 # Theme Config (set to your actual theme folder name)
 theme = "hugo-saasify-theme"
