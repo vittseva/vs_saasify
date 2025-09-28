@@ -34,6 +34,16 @@ jobs:
           hugo-version: '0.150.1'
           extended: true
 
+      # 👇 Add these two steps
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install PostCSS deps
+        run: |
+          npm install -g postcss postcss-cli autoprefixer
+
       - name: Compute Project Pages baseURL
         run: echo "BASEURL=https://vittseva.github.io/vs_saasify/" >> $GITHUB_ENV
 
@@ -42,13 +52,12 @@ jobs:
           HUGO_ENV: production
           HUGO_ENABLEGITINFO: "true"
         run: |
-          hugo --minify --gc --baseURL "${BASEURL}"
+          hugo --minify --gc --baseURL "${BASEURL}" --verbose
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
-
   deploy:
     environment:
       name: github-pages
