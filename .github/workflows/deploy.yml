@@ -52,7 +52,7 @@ jobs:
           HUGO_ENV: production
           HUGO_ENABLEGITINFO: "true"
         run: |
-          hugo --minify --gc --baseURL "${BASEURL}" --verbose
+          hugo --minify --gc --baseURL "${BASEURL}"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
