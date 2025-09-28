@@ -16,7 +16,6 @@ Thumbs.db
 
 # Node dependencies (if you use npm/yarn for Tailwind or tooling)
 node_modules/
-package-lock.json
 yarn.lock
 
 # Go modules cache (if using Hugo modules)
